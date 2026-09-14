@@ -9,7 +9,8 @@
   <link rel="manifest" href="manifest.json">
   <title>Aesthetic OS</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- 注意：路径已修改为当前目录 -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -20,16 +21,14 @@
   <!-- 桌面视图 -->
   <main id="view-desktop" class="view active">
     
-    <!-- 桌面网格系统 (自由拼贴排版) -->
+    <!-- 桌面网格系统 -->
     <div id="desktop-grid">
       
-      <!-- 大时间 Widget -->
       <div class="widget-time">
         <div class="time-large">00:00</div>
         <div class="date-sub">2026.09.15 TUE</div>
       </div>
 
-      <!-- 个人资料 Widget -->
       <div class="glass-panel widget-profile">
         <img class="profile-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" alt="avatar">
         <div class="profile-info">
@@ -38,7 +37,6 @@
         </div>
       </div>
 
-      <!-- 文字修饰 Widget -->
       <div class="widget-text" style="grid-column: span 2;">+ Our exclusive memories +</div>
       <div class="widget-text" style="grid-column: span 2;">Have a nice day</div>
 
@@ -60,7 +58,6 @@
         <div class="app-name">世界书</div>
       </div>
 
-      <!-- 音乐 Widget -->
       <div class="glass-panel widget-music">
         <div class="music-cover"></div>
         <div class="music-info">
@@ -99,7 +96,7 @@
     <!-- 底部功能区 -->
     <div id="search-pill"><span>⌕</span> 搜索</div>
     
-    <!-- Dock 栏 (4 个核心应用) -->
+    <!-- Dock 栏 -->
     <div id="dock-container" class="glass-panel">
       <div class="app-icon-wrapper" data-app="phone">
         <div class="app-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
@@ -116,18 +113,17 @@
     </div>
   </main>
 
-  <!-- 全局 App 运行容器 (SPA切换目标) -->
+  <!-- App 运行容器 -->
   <section id="view-app" class="view hidden">
     <header class="app-header">
       <button id="btn-home">〈 桌面</button>
       <h2 id="app-title">加载中</h2>
-      <div style="width: 60px;"></div> <!-- 占位保持标题居中 -->
+      <div style="width: 60px;"></div>
     </header>
-    <div id="app-content">
-      <!-- JS 会把具体的业务代码注入到这里 -->
-    </div>
+    <div id="app-content"></div>
   </section>
 
-  <script src="js/app.js"></script>
+  <!-- 注意：路径已修改为当前目录 -->
+  <script src="app.js"></script>
 </body>
 </html>
