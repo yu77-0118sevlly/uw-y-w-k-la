@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nebula · AI 对话</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true">
+      <symbol id="spark" viewBox="0 0 24 24"><path d="M12 2.5c.7 5.7 3.8 8.8 9.5 9.5-5.7.7-8.8 3.8-9.5 9.5-.7-5.7-3.8-8.8-9.5-9.5 5.7-.7 8.8-3.8 9.5-9.5Z"/></symbol>
+      <symbol id="chat" viewBox="0 0 24 24"><path d="M5.5 17.6 3.8 21l4.3-1.5c1.1.4 2.4.6 3.7.6 5.2 0 9.4-3.4 9.4-7.7S17 4.7 11.8 4.7 2.4 8.1 2.4 12.4c0 2 .9 3.8 2.5 5.2Z"/><path d="M8 12.3h.01M12 12.3h.01M16 12.3h.01" class="dot"/></symbol>
+      <symbol id="sliders" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="11" cy="18" r="2"/></symbol>
+      <symbol id="compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m14.9 9.1-1.8 4-4 1.8 1.8-4 4-1.8Z"/></symbol>
+      <symbol id="palette" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 1 0 0 17c1.5 0 2.3-.8 2.3-1.8 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h1.1c2.3 0 4.1-1.8 4.1-4.1C20.5 6.4 16.7 3.5 12 3.5Z"/><circle cx="7.4" cy="11" r=".8"/><circle cx="10.1" cy="7.7" r=".8"/><circle cx="14.3" cy="7.7" r=".8"/></symbol>
+      <symbol id="book" viewBox="0 0 24 24"><path d="M4.2 5.5c2.8-1.3 5.5-1 7.8.8v12.3c-2.3-1.8-5-2.1-7.8-.8V5.5ZM19.8 5.5c-2.8-1.3-5.5-1-7.8.8v12.3c2.3-1.8 5-2.1 7.8-.8V5.5Z"/><path d="M12 6.3v12.3"/></symbol>
+      <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="send" viewBox="0 0 24 24"><path d="m3.5 4 17.2 7.3a.8.8 0 0 1 0 1.4L3.5 20l3-6.2L3.5 4Z"/><path d="m6.5 13.8 7.8-2.1"/></symbol>
+      <symbol id="more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+      <symbol id="chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+      <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    </svg>
+    <main class="phone" aria-label="Nebula AI 聊天应用">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark"><svg><use href="#spark"/></svg></span><span>Nebula</span></div>
+        <button class="icon-button" aria-label="更多选项"><svg><use href="#more"/></svg></button>
+      </header>
+      <section class="content" id="view-chat">
+        <div class="greeting"><span class="eyebrow">YOUR PERSONAL AI</span><h1>今天想探索<br><em>什么？</em></h1><p>让灵感在此刻开始。</p></div>
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="帮我规划一次周末旅行"><span class="suggestion-icon travel"><svg><use href="#compass"/></svg></span><span><b>规划旅程</b><small>设计一场周末逃离</small></span><svg><use href="#arrow"/></svg></button>
+          <button class="suggestion" data-prompt="帮我打开写作灵感"><span class="suggestion-icon idea"><svg><use href="#spark"/></svg></span><span><b>激发灵感</b><small>从一个新想法开始</small></span><svg><use href="#arrow"/></svg></button>
+        </div>
+        <div class="conversation" id="conversation"></div>
+      </section>
+      <section class="content settings-view hidden" id="view-settings">
+        <div class="page-head"><span class="eyebrow">CONNECTIONS</span><h2>设置</h2><p>管理模型与服务连接</p></div>
+        <div class="settings-card"><div class="settings-icon"><svg><use href="#spark"/></svg></div><div><b>当前模型</b><small>Nova 3.5 · 默认</small></div><button class="mini-button" id="model-button">更改</button></div>
+        <div class="section-label">API 服务</div>
+        <div id="api-list" class="api-list"><div class="api-item"><span class="status"></span><div><b>Nebula Cloud</b><small>已连接</small></div><svg><use href="#chevron"/></svg></div></div>
+        <button class="add-service" id="open-api"><svg><use href="#plus"/></svg>添加 API 服务</button>
+      </section>
+      <section class="content settings-view hidden" id="view-palette"><div class="page-head"><span class="eyebrow">APPEARANCE</span><h2>美化</h2><p>让 Nebula 更符合你的风格</p></div><div class="theme-preview"><div class="preview-orb"></div><span>雾银</span><small>当前主题</small></div><div class="appearance-row"><span>界面亮度</span><div class="brightness"><i></i></div></div><div class="appearance-row"><span>毛玻璃效果</span><button class="toggle active" aria-label="切换毛玻璃效果"></button></div></section>
+      <section class="content settings-view hidden" id="view-book"><div class="page-head"><span class="eyebrow">KNOWLEDGE</span><h2>世界书</h2><p>为对话构筑独特的世界</p></div><div class="empty-book"><span><svg><use href="#book"/></svg></span><h3>还没有世界书</h3><p>添加设定、角色与背景，让 AI 更懂你的故事。</p><button class="filled-button">创建世界书</button></div></section>
+      <div class="composer" id="composer"><button class="attach" aria-label="添加内容"><svg><use href="#plus"/></svg></button><input id="message" placeholder="和 Nebula 聊点什么..." /><button class="send" id="send" aria-label="发送消息"><svg><use href="#send"/></svg></button></div>
+      <nav class="bottom-nav" aria-label="主导航"><button class="nav-item active" data-view="chat"><span><svg><use href="#chat"/></svg></span><b>聊天</b></button><button class="nav-item" data-view="settings"><span><svg><use href="#sliders"/></svg></span><b>设置</b></button><button class="nav-item" data-view="palette"><span><svg><use href="#palette"/></svg></span><b>美化</b></button><button class="nav-item" data-view="book"><span><svg><use href="#book"/></svg></span><b>世界书</b></button></nav>
+    </main>
+    <div class="modal hidden" id="api-modal"><form class="modal-card" id="api-form"><button type="button" class="close" id="close-modal">×</button><span class="eyebrow">NEW CONNECTION</span><h2>添加 API 服务</h2><label>服务名称<input required name="name" placeholder="例如：我的模型服务" /></label><label>API Key<input required name="key" type="password" placeholder="输入 API Key" /></label><label>接口 URL<input required name="url" type="url" placeholder="https://api.example.com/v1" /></label><button class="filled-button" type="submit">保存连接</button></form></div>
+    <script src="app.js"></script>
+  </body>
+</html>
